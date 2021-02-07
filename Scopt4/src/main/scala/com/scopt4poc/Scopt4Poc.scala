@@ -12,15 +12,13 @@ object Scopt4Poc {
     }
 
     //Parse parameters from args
-    POCParser.parseParameters(aFile, args)
+    parseParameters(aFile, args)
 
-    val params = POCParser.parseParameters (aFile, args)
+    val params = parseParameters (aFile, args)
     println(params.file)
   }
-}
 
-object POCParser {
-  val init = InputParameters(null)
+  private val init = InputParameters(null)
 
   def parseParameters(
                        file: String,
