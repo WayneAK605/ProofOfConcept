@@ -1,6 +1,8 @@
 # Scopt 4.0 POC
 
 ##Overview
+This implementation used the recommendation from this website - https://eed3si9n.com/scopt4 <br>
+
 This Scopt 4.0 POC is to demonstrate the way to overcome a situation where a ETL has subprojects.  Each subproject has its own set of parameters.  <br>
 An good example that I want to demonstrate here is,
 1. the `CrosswalkPath` is required for **place** file, but it is not a valid parameter for **Visit**.
