@@ -43,7 +43,7 @@ object Scopt4Poc {
 
     val (params, effects) = OParser.runParser(parser, args, init)
 
-    // scopt advises to override terminate (we shouldn't exit(1) a spark application)
+    // scopt suggested to override terminate
     OParser.runEffects(
       effects,
       effectHandler.getOrElse(new DefaultOEffectSetup {

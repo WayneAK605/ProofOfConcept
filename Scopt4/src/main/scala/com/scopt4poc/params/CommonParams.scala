@@ -4,7 +4,6 @@ import scopt._
 trait CommonParams [R] {
   def CopyInputBasePath(str: String): R
   def CopyOutputBasePath(str: String): R
-  def CopyDeltaBasePath(str: String) : R
   def CopyFile(Str: String) : R
 }
 
