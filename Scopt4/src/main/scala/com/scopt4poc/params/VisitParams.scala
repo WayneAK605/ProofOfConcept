@@ -15,7 +15,7 @@ object VisitParams {
         opt[String]('h', "HouseholdOutputPath")
           .required()
           .action((h, c) => c.CopyHousehold(h))
-          .text("HouseholdOutputPath, example: s3a://605-prod-data-lake/users/whuang/placeiq_landmark/household")
+          .text("HouseholdOutputPath, example: s3a://bucketname/household")
       )
     visitOption
   }

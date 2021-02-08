@@ -5,11 +5,11 @@ package com.scopt4poc.params
 final case class InputParameters(
                                   date: String = "", // YYYYMMDD
                                   file: String = "", // chain
-                                  inputBasePath: String = "s3a://605-prod-placeiq/enhanced_visits/enhanced_landmark_v4_1/csv/",
+                                  inputBasePath: String = "",
                                   deltaBasePath: String = "",
                                   outputBasePath: String = "",
                                   householdOutputPath: String = "",
-                                  crosswalkPath: String = "s3a://605-client-data-vault/placeiq/crosswalk/",
+                                  crosswalkPath: String = "",
                                   reMatch: Boolean = false,
                                   isRunningLocal: Boolean = false,
                                   saveMode: String = "Overwrite"

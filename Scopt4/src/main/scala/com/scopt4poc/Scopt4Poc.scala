@@ -12,13 +12,9 @@ object Scopt4Poc {
     }
 
     //Parse parameters from args
-    parseParameters(aFile, args)
-
     val params = parseParameters (aFile, args)
-    println(params.file)
+    println(params.outputBasePath)
   }
-
-  private val init = InputParameters(null)
 
   def parseParameters(
                        file: String,
@@ -38,21 +34,14 @@ object Scopt4Poc {
           CommonParams.parseCommonParams[InputParameters]
         )
       }
-      case _ => throw new IllegalArgumentException(s"Unknown file is passed")
+      case _ => throw new IllegalArgumentException(s"Unknown --File value is passed")
     }
 
-    val (params, effects) = OParser.runParser(parser, args, init)
-
-    // scopt suggested to override terminate
-    OParser.runEffects(
-      effects,
-      effectHandler.getOrElse(new DefaultOEffectSetup {
-        override def terminate(exitState: Either[String, Unit]): Unit = () //
-      }))
-
-    params.getOrElse {
-      throw new IllegalArgumentException(
-        "Spark job submission has failed: " + args.mkString(" "))
+    OParser.parse(parser, args, InputParameters()) match {
+      case Some(params) =>
+        params
+      case _ =>
+        throw new IllegalArgumentException(s"Spark job submission has failed, invalid parameters=${args.mkString(" ")}")
     }
   }
 }

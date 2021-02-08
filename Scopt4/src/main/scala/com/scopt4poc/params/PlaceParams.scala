@@ -16,12 +16,12 @@ object PlaceParams {
         opt[String]('d', "DeltaBasePath")
           .required()
           .action((d, c) => c.CopyDeltaBasePath(d))
-          .text("deltaBasePath, example: s3a://605-prod-data-lake/users/whuang/placeiq_landmark/"),
+          .text("deltaBasePath, example: s3a://bucketname/delta/"),
 
         opt[String]('w', "CrosswalkPath")
           .required()
           .action((w, c) => c.CopyCrosswalkPath(w))
-          .text("crosswalkPath, example: s3a://605-client-data-vault/placeiq/crosswalk/")
+          .text("crosswalkPath, example: s3a://bucketname/crosswalk/")
       )
     placeOption
   }

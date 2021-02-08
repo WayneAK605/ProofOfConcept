@@ -22,12 +22,12 @@ object CommonParams{
         opt[String]('i', "InputBasePath")
           .required()
           .action((i, c) => c.CopyInputBasePath(i))
-          .text("inputBasePath, example: s3a://605-prod-placeiq/enhanced_visits/enhanced_landmark_v4_1/csv/"),
+          .text("inputBasePath, example: s3a://bucketname/input/"),
 
         opt[String]('o', "OutputBasePath")
           .required()
           .action((o, c) => c.CopyOutputBasePath(o))
-          .text("outputBasePath, example: s3a://605-prod-data-lake/users/whuang/placeiq_landmark/")
+          .text("outputBasePath, example: s3a://bucketname/output/")
       )
     CommonOptions
   }
