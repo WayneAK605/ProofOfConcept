@@ -40,12 +40,10 @@ object Scopt4Poc {
     }
   }
 
-  def getParamValue(a: Array[String], key: String):String = {
-    val mapValue = a.sliding(2,2).toList.collect {
-      case Array(k, v) => Map(k -> v).map(value => value)
-    }
-    mapValue.map(_.get(key).getOrElse("")).collect {
-      case value => value
-    }.mkString("")
+  def getParamValue(array: Array[String], key: String): String = {
+    array.grouped(2)
+      .map(param => param(0) -> param(1))
+      .toMap
+      .getOrElse(key, "default_value")
   }
 }
