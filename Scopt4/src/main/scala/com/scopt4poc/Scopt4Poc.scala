@@ -4,15 +4,10 @@ import com.scopt4poc.params.{CommonParams, InputParameters, PlaceParams, VisitPa
 
 object Scopt4Poc {
   def main(args: Array[String]) = {
-    var aFile = ""
-
-    //Get File Type
-    args.sliding(2, 2).toList.collect {
-      case Array("--File", argFile: String) => aFile = argFile
-    }
+    val fileType = getParamValue (args,"--File")
 
     //Parse parameters from args
-    val params = parseParameters (aFile, args)
+    val params = parseParameters (fileType, args)
     println(params.outputBasePath)
   }
 
@@ -43,5 +38,14 @@ object Scopt4Poc {
       case _ =>
         throw new IllegalArgumentException(s"Spark job submission has failed, invalid parameters=${args.mkString(" ")}")
     }
+  }
+
+  def getParamValue(a: Array[String], key: String):String = {
+    val mapValue = a.sliding(2,2).toList.collect {
+      case Array(k, v) => Map(k -> v).map(value => value)
+    }
+    mapValue.map(_.get(key).getOrElse("")).collect {
+      case value => value
+    }.mkString("")
   }
 }
